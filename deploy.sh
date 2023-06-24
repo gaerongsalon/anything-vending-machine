@@ -7,7 +7,7 @@ if [ -z "${DEPLOY_TOKEN}" ]; then
   exit 1
 fi
 
-APP_NAME="kid-timer"
+APP_NAME="anything_vending_machine"
 DEBUG=""
 
 usage() {
@@ -58,11 +58,11 @@ ANDROID_MANIFEST="android/app/src/main/AndroidManifest.xml"
 git restore -- "${BUILD_GRADLE}" "${ANDROID_MANIFEST}"
 
 log "Build debug apk."
-sed -i 's/me.hoppipolla.kid_timer/me.hoppipolla.kid_timer_debug/g' "${BUILD_GRADLE}"
+sed -i 's/me.hoppipolla.anything_vending_machine/me.hoppipolla.anything_vending_machine_debug/g' "${BUILD_GRADLE}"
 sed -i 's/뭐든지 자판기/뭐든지 자판기_debug/g' "${ANDROID_MANIFEST}"
 DEBUG_APK="$(build_and_upload "${APP_NAME}-${SERIAL}-debug.apk" "build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk" "apk --debug --split-per-abi --target-platform android-arm64" | tail -n1)"
 LINKS="- <${DEBUG_APK}|DEBUG> 🎉"
-sed -i 's/me.hoppipolla.kid_timer_debug/me.hoppipolla.kid_timer/g' "${BUILD_GRADLE}"
+sed -i 's/me.hoppipolla.anything_vending_machine_debug/me.hoppipolla.anything_vending_machine/g' "${BUILD_GRADLE}"
 sed -i 's/뭐든지 자판기_debug/뭐든지 자판기/g' "${ANDROID_MANIFEST}"
 
 if [ -z "${DEBUG}" ]; then
