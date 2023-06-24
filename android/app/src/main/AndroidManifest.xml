@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="anything_vending_machine"
+        android:label="뭐든지 자판기"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
